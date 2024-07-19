@@ -1,13 +1,6 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const SideBar = () => {
-  /* subscribe to specific part of a store. Don't subscribe to the entire store which is not optimal */
-  const isSideBarOpen = useSelector((store) => store.app.isMenuOpen);
-
-  // Early return pattern.
-  if (!isSideBarOpen) return null;
-
+function SideBar() {
   return (
     <div className='shadow-lg p-3 pr-6' style={{ flex: 1 }}>
       <div className='hover:cursor-pointer'>
@@ -40,7 +33,7 @@ const SideBar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SideBar;
 
