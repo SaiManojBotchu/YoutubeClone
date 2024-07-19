@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './pages/Home';
 import Navbar from './components/NavBar';
-import WatchPage from './components/WatchPage';
+import Video from './pages/Video';
 import NotFound from './components/NotFound';
 import SearchResults from './components/SearchResults';
 import SideBar from './components/SideBar';
@@ -19,7 +19,7 @@ function App() {
         {isSideBarOpen && <SideBar />}
         <Routes>
           <Route path='/' Component={Home} />
-          <Route path='/watch' Component={WatchPage} />
+          <Route path='/watch' Component={Video} />
           <Route path='*' Component={NotFound} />
           <Route path='/results' Component={SearchResults} />
         </Routes>

@@ -28,12 +28,12 @@ function VideoCard({ video }) {
   return (
     <Link to={`/watch?v=${video.id}`}>
       <div
-        className='m-2 w-[20rem] h-[21rem] rounded-2xl text-sm overflow-y-hidden '
+        className='m-2 mb-16 w-full h-auto rounded-2xl text-sm overflow-y-hidden'
         onClick={getVideoRecommendations}>
         <img
-          src={thumbnails.maxres.url}
+          src={thumbnails.maxres?.url || thumbnails.medium.url}
           alt='video-thumbnail'
-          className='rounded-lg hover:cursor-pointer'
+          className='rounded-lg hover:cursor-pointer w-full'
         />
         <div className='mt-3 px-1'>
           <p className='mb-2 line-clamp-2 font-semibold'>{snippet.title}</p>
