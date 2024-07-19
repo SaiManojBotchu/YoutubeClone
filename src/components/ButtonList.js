@@ -5,7 +5,13 @@ function ButtonList() {
   return (
     <div className='p-4 space-x-3'>
       {links.map((link) => (
-        <button className='pt-1 pb-1 px-3 bg-gray-200 rounded-lg'>{link}</button>
+        <button
+          key={link}
+          className={`pt-1 pb-1 px-3 font-semibold rounded-lg ${
+            link === 'All' ? 'bg-black text-white' : 'bg-gray-200'
+          } `}>
+          {link}
+        </button>
       ))}
     </div>
   );

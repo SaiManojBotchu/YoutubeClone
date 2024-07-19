@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import appSlice from './appSlice';
 import cacheSlice from './cacheSlice';
-import searchResultsSlice from '../utils/searchResultsSlice';
+import searchResultsSlice from './searchResultsSlice';
 
 const store = configureStore({
   reducer: {

@@ -9,6 +9,7 @@ function Home() {
   const getVideos = async () => {
     const data = await fetch(ytAPI);
     const json = await data.json();
+    console.log(json);
     setVideos(json.items);
   };
 

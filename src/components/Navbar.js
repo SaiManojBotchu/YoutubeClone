@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleSideBarMenu } from '../redux/appSlice';
 import { manageCache } from '../redux/cacheSlice';
-import { inputJSONData } from '../utils/searchResultsSlice';
+import { inputJSONData } from '../redux/searchResultsSlice';
 import { ytQuerySearchAPI, ytSearchAPI } from '../utils/constants';
 import userIcon from '.././images/avatar-2.png';
 import youtube_logo from '.././images/youtube.png';
