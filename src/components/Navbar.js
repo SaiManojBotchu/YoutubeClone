@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { toggleSideBarMenu } from '../utils/appSlice';
-import { manageCache } from '../utils/cacheSlice';
+import { toggleSideBarMenu } from '../redux/appSlice';
+import { manageCache } from '../redux/cacheSlice';
 import { inputJSONData } from '../utils/searchResultsSlice';
 import { ytQuerySearchAPI, ytSearchAPI } from '../utils/constants';
 import userIcon from '.././images/avatar-2.png';
