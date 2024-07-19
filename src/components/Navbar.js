@@ -76,6 +76,7 @@ const Header = () => {
   const toggleSideBarMenuHandler = () => {
     /* disptach an action toggle side bar menu so that the state in the redux store get's updated*/
     dispatch(toggleSideBarMenu());
+    console.log('sidebar');
   };
 
   return (
@@ -99,10 +100,7 @@ const Header = () => {
         </div>
         <div className='ml-2'>
           <Link to={'/'}>
-            <div className='h-[40px] w-20'>
-              <img src={youtube_logo} alt='yt_logo' className='h-[30px]' />
-              {/* <p>Youtube</p> */}
-            </div>
+            <img src={youtube_logo} alt='yt_logo' className='h-[30px]' />
           </Link>
         </div>
       </div>
