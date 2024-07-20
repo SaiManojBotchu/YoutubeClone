@@ -1,4 +1,4 @@
-export default function timeAgo(dateString) {
+export default function formatTime(dateString) {
   const now = new Date();
   const publishedDate = new Date(dateString);
   const diffInSeconds = Math.floor((now - publishedDate) / 1000);

@@ -6,8 +6,8 @@ import { commentsData } from '../../utils/commentsData';
 const CommentsContainer = () => {
   return (
     <div
-      className='inline-block absolute top-[80%] ml-3
-        py-2 px-4 w-[45%]'>
+      className='inline-block absolute top-[85%]
+        py-2 w-[45%]'>
       <p className='mb-4 font-bold text-2xl'>COMMENTS</p>
       <CommentsList comments={commentsData} />
     </div>

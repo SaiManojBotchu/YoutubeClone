@@ -32,8 +32,8 @@ function Video() {
     <div className='flex m-5'>
       <iframe
         className='rounded-2xl'
-        width='73%'
-        height='600'
+        width='75%'
+        height='590'
         src={
           `https://www.youtube.com/embed/${params.get(
             'v'
@@ -44,8 +44,8 @@ function Video() {
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
         allowFullScreen></iframe>
 
-      <div className='flex-1 mt-2'>
-        {searchResults.map((eachResult) => (
+      <div className='flex-1'>
+        {searchResults.slice(1).map((eachResult) => (
           <SuggestedVideoCard eachResult={eachResult} key={eachResult.id.videoId} />
         ))}
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ytQuerySearchAPI } from '../../utils/constants';
+import { ytQuerySearchAPI, ytAPI } from '../../utils/constants';
 import { inputJSONData } from '../../redux/searchResultsSlice';
-import timeAgo from '../../utils/timeAgo';
+import formatTime from '../../utils/formatTime';
 import formatViews from '../../utils/formatViews';
 
 function VideoCard({ video }) {
@@ -15,13 +15,14 @@ function VideoCard({ video }) {
   // console.log(video);
 
   const getVideoRecommendations = async () => {
-    const res = await fetch(
-      ytQuerySearchAPI +
-        snippet.channelTitle +
-        '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
-    );
-    const data = await res.json();
+    // let temp =
+    //   ytQuerySearchAPI +
+    //   snippet.channelTitle +
+    //   '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI';
+    const res = await fetch(ytAPI);
 
+    const data = await res.json();
+    // console.log(data);
     dispatch(inputJSONData(data));
   };
 
@@ -40,7 +41,8 @@ function VideoCard({ video }) {
           <div className='text-neutral-500 font-medium'>
             <p>{snippet.channelTitle}</p>
             <p>
-              {formatViews(statistics.viewCount)} views • {timeAgo(snippet.publishedAt)}
+              {formatViews(statistics.viewCount)} views •{' '}
+              {formatTime(snippet.publishedAt)}
             </p>
           </div>
         </div>
