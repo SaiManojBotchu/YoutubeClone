@@ -1,5 +1,5 @@
 import CommentsList from './CommentsList';
-import { commentsData } from '../utils/commentsData';
+import { commentsData } from '../../utils/commentsData';
 
 /* BUILDING N-LEVEL NESTED COMMENTS */
 

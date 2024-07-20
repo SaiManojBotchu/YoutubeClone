@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ytQuerySearchAPI } from '../utils/constants';
-import { inputJSONData } from '../redux/searchResultsSlice';
-import timeAgo from '../utils/timeAgo';
-import formatViews from '../utils/formatViews';
+import { ytQuerySearchAPI } from '../../utils/constants';
+import { inputJSONData } from '../../redux/searchResultsSlice';
+import timeAgo from '../../utils/timeAgo';
+import formatViews from '../../utils/formatViews';
 
 function VideoCard({ video }) {
   const dispatch = useDispatch();

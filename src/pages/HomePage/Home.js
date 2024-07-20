@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import VideoCard from '../components/VideoCard';
-import ButtonList from '../components/ButtonList';
-import { ytAPI } from '../utils/constants';
+import VideoCard from './VideoCard';
+import ButtonList from './ButtonList';
+import { ytAPI } from '../../utils/constants';
 
 function Home() {
   const [vidoes, setVideos] = useState([]);

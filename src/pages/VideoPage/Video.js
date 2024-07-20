@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import { closeSideBarMenu } from '../redux/appSlice';
+import { closeSideBarMenu } from '../../redux/appSlice';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { SuggestedVideoCard } from '../components/SuggestedVideoCard';
-import CommentsContainer from '../components/CommentsContainer';
+import { SuggestedVideoCard } from './SuggestedVideoCard';
+import CommentsContainer from './CommentsContainer';
 
 function Video() {
   const searchResultsSlice = useSelector((store) => store.searchResultsSlice);
@@ -29,11 +29,11 @@ function Video() {
   if (!searchResults) return null;
 
   return (
-    <div className='flex'>
+    <div className='flex m-5'>
       <iframe
-        className='m-3 flex-2 rounded-2xl'
-        width='68%'
-        height='550'
+        className='rounded-2xl'
+        width='73%'
+        height='600'
         src={
           `https://www.youtube.com/embed/${params.get(
             'v'
