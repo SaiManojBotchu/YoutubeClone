@@ -20,8 +20,8 @@ function App() {
         <Routes>
           <Route path='/' Component={Home} />
           <Route path='/watch' Component={Video} />
-          <Route path='*' Component={NotFound} />
           <Route path='/results' Component={SearchResults} />
+          <Route path='*' Component={NotFound} />
         </Routes>
       </div>
     </>
