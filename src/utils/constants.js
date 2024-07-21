@@ -5,8 +5,16 @@ export const ytAPI =
   API_KEY;
 
 // bypassing the cors with the help of corsproxy.io
+const corsUrl = 'https://thingproxy.freeboard.io/fetch/';
 export const ytSearchAPI =
-  'https://corsproxy.io/?https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
+  corsUrl +
+  'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=';
 
 export const ytQuerySearchAPI =
   'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=';
+
+export const comments_API =
+  'https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=Zb1zVeXLUf8&key=' +
+  API_KEY;
+
+// 'https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';

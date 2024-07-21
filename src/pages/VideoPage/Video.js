@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { SuggestedVideoCard } from './SuggestedVideoCard';
-import CommentsContainer from './CommentsContainer';
+import CommentsSection from './CommentsSection';
 
 function Video() {
   const searchResultsSlice = useSelector((store) => store.searchResultsSlice);
@@ -29,11 +29,11 @@ function Video() {
   if (!searchResults) return null;
 
   return (
-    <div className='flex m-5'>
+    <div className='flex m-6'>
       <iframe
-        className='rounded-2xl'
-        width='75%'
-        height='590'
+        className='rounded-xl'
+        width='71%'
+        height='560'
         src={
           `https://www.youtube.com/embed/${params.get(
             'v'
@@ -49,7 +49,7 @@ function Video() {
           <SuggestedVideoCard eachResult={eachResult} key={eachResult.id.videoId} />
         ))}
       </div>
-      <CommentsContainer />
+      <CommentsSection />
     </div>
   );
 }
