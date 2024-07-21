@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './pages/HomePage/Home';
-import Navbar from './components/NavBar';
+import NavBar from './components/navbar/NavBar';
 import Video from './pages/VideoPage/Video';
 import NotFound from './components/NotFound';
 import SearchResults from './components/SearchResults';
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <NavBar />
       <div className='flex'>
         {isSideBarOpen && <SideBar />}
         <Routes>
