@@ -3,7 +3,7 @@ import React from 'react';
 function ButtonList() {
   const links = ['All', 'Music', 'Live', 'Cricket', 'News', 'Mixes', 'Game shows'];
   return (
-    <div className='hidden sm:block p-4 space-x-3'>
+    <div className='hidden sm:block my-4 space-x-3'>
       {links.map((link) => (
         <button
           key={link}

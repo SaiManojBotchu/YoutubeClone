@@ -7,10 +7,14 @@ function Home() {
   const [vidoes, setVideos] = useState([]);
 
   const getVideos = async () => {
-    const data = await fetch(ytAPI);
-    const json = await data.json();
-    // console.log(json);
-    setVideos(json.items);
+    try {
+      const data = await fetch(ytAPI);
+      const json = await data.json();
+      // console.log(json);
+      setVideos(json.items);
+    } catch (e) {
+      console.log('Home.js - Error');
+    }
   };
 
   useEffect(() => {
@@ -20,9 +24,9 @@ function Home() {
   if (vidoes.length <= 0) return null;
 
   return (
-    <div className='flex flex-col px-10'>
+    <div className='flex flex-col mx-8'>
       <ButtonList />
-      <div className='p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4'>
         {vidoes.map((video) => (
           <VideoCard video={video} key={video.snippet.thumbnails.medium.url} />
         ))}
