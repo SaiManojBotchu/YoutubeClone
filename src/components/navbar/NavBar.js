@@ -101,15 +101,12 @@ export default function NavBar() {
       className='flex flex-1 justify-between items-center content-center py-2.5 px-8'
       onClick={handleClickOutside}>
       <IconComponent toggleSideBarMenuHandler={toggleSideBarMenuHandler} />
-      <div
-        ref={popupRef}
-        className='flex items-center relative w-[40%]'
-        >
+      <div ref={popupRef} className='flex items-center relative w-[40%]'>
         <SearchBar
           searchInput={searchInput}
           handleSearchOnClick={handleSearchOnClick}
           handleSearchInput={handleSearchInput}
-          setShowSuggestions = {setShowSuggestions}
+          setShowSuggestions={setShowSuggestions}
         />
         {showSuggestions && (
           <SuggestionsComponent

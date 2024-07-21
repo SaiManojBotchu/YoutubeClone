@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Home from './pages/HomePage/Home';
+import Home from './pages/home/HomePage';
 import NavBar from './components/navbar/NavBar';
-import Video from './pages/VideoPage/Video';
+import Video from './pages/video/VideoPage';
 import NotFound from './components/NotFound';
 import SearchResults from './components/SearchResults';
 import SideBar from './components/SideBar';

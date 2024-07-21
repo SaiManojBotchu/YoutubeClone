@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { SuggestedVideoCard } from '../pages/VideoPage/SuggestedVideoCard';
+import { SuggestedVideoCard } from '../pages/video/SuggestedVideoCard';
 
 const SearchResults = () => {
   const searchResultsSlice = useSelector((store) => store.searchResultsSlice);
