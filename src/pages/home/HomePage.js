@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import VideoCard from './VideoCard';
 import ButtonList from './ButtonList';
 import { YT_API } from '../../utils/constants';
@@ -8,10 +9,8 @@ function Home() {
 
   const getVideos = async () => {
     try {
-      const data = await fetch(YT_API);
-      const json = await data.json();
-      // console.log(json);
-      setVideos(json.items);
+      const res = await axios(YT_API);
+      setVideos(res.data.items);
     } catch (e) {
       console.log('Home.js - Error');
     }

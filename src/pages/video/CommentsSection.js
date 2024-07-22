@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
+import axios from 'axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import formatViews from '../../utils/formatViews';
 import { YT_COMMENTS_API } from '../../utils/constants';
@@ -13,10 +14,8 @@ const CommentsSection = () => {
 
   const getCommentsData = async () => {
     try {
-      const res = await fetch(YT_COMMENTS_API);
-      const data = await res.json();
-      await setCommentsData(data.items);
-      // console.log(commentsData);
+      const res = await axios(YT_COMMENTS_API);
+      setCommentsData(res.data.items);
     } catch (e) {
       console.log('CommentsSection - Error');
     }

@@ -1,29 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { YT_API } from '../../utils/constants';
 import { inputJSONData } from '../../redux/searchResultsSlice';
 import formatTime from '../../utils/formatTime';
 import formatViews from '../../utils/formatViews';
 
 function VideoCard({ video }) {
+  const { snippet, statistics } = video;
+  const { thumbnails } = snippet;
   const dispatch = useDispatch();
 
-  const { snippet, statistics } = video;
-
-  const { thumbnails } = snippet;
-  // console.log(video);
-
   const getVideoRecommendations = async () => {
-    // let temp =
-    //   ytQuerySearchAPI +
-    //   snippet.channelTitle +
-    //   '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI';
-    const res = await fetch(YT_API);
-
-    const data = await res.json();
-    // console.log(data);
-    dispatch(inputJSONData(data));
+    const res = await axios(YT_API);
+    dispatch(inputJSONData(res.data));
   };
 
   return (

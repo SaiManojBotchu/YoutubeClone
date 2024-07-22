@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import IconComponent from './IconComponent';
@@ -27,12 +28,10 @@ export default function NavBar() {
 
   const handleSearchOnClick = async () => {
     try {
-      const data = await fetch(
+      const res = await axios(
         YT_QUERY_SEARCH_API + searchInput + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
       );
-      const json = await data.json();
-      dispatch(inputJSONData(json));
-      console.log('1');
+      dispatch(inputJSONData(res.data));
     } catch (e) {
       console.log('Navbar - handleSearchOnClick', e);
     }
@@ -52,40 +51,28 @@ export default function NavBar() {
     return () => {
       clearTimeout(timer);
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput]);
 
-  // function to make api call on the searchInput text
   const callSearchAPI = async () => {
     try {
-      const res = await fetch(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
-      if (!res.ok) {
-        throw new Error('Primary URL failed');
-      }
-      const data = await res.json();
-      // console.log(data);
-      setSuggestions(data[1]);
-      // caching before result incase presses backspace
+      const res = await axios(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
+      setSuggestions(res.data[1]);
+      // caching prev result incase presses backspace
       dispatch(
         manageCache({
-          [searchInput]: data[1]
+          [searchInput]: res.data[1]
         })
       );
     } catch (e) {
       console.log('Primary URL failed, trying fallback URL', e);
       try {
-        const res = await fetch(YT_SEARCH_API + searchInput);
-        if (!res.ok) {
-          throw new Error('Fallback URL also failed');
-        }
-        const data = await res.json();
-        // console.log(data);
-        setSuggestions(data[1]);
-        // caching before result incase presses backspace
+        const res = await axios(YT_SEARCH_API + searchInput);
+        setSuggestions(res.data[1]);
+        // caching prev result incase presses backspace
         dispatch(
           manageCache({
-            [searchInput]: data[1]
+            [searchInput]: res.data[1]
           })
         );
       } catch (err) {
