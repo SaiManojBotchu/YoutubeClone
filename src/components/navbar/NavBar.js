@@ -56,9 +56,13 @@ export default function NavBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput]);
 
-  const handleSearchApiCall = async (url) => {
+  // function to make api call on the searchInput text
+  const callSearchAPI = async () => {
     try {
-      const res = await fetch(url);
+      const res = await fetch(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
+      if (!res.ok) {
+        throw new Error('Primary URL failed');
+      }
       const data = await res.json();
       // console.log(data);
       setSuggestions(data[1]);
@@ -69,17 +73,24 @@ export default function NavBar() {
         })
       );
     } catch (e) {
-      console.log(e);
-    }
-  };
-
-  // function to make api call on the searchInput text
-  const callSearchAPI = async () => {
-    try {
-      handleSearchApiCall(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
-    } catch (err) {
-      console.log('CORS PROXY NOT WORKING');
-      handleSearchApiCall(YT_SEARCH_API + searchInput);
+      console.log('Primary URL failed, trying fallback URL', e);
+      try {
+        const res = await fetch(YT_SEARCH_API + searchInput);
+        if (!res.ok) {
+          throw new Error('Fallback URL also failed');
+        }
+        const data = await res.json();
+        // console.log(data);
+        setSuggestions(data[1]);
+        // caching before result incase presses backspace
+        dispatch(
+          manageCache({
+            [searchInput]: data[1]
+          })
+        );
+      } catch (err) {
+        console.error('Both primary and fallback URLs failed', e);
+      }
     }
   };
 
