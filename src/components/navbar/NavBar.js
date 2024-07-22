@@ -26,10 +26,10 @@ export default function NavBar() {
   const cacheSlice = useSelector((store) => store.cache);
   const dispatch = useDispatch();
 
-  const handleSearchOnClick = async () => {
+  const handleSearchOnClick = async (value = searchInput) => {
     try {
       const res = await axios(
-        YT_QUERY_SEARCH_API + searchInput + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
+        YT_QUERY_SEARCH_API + value + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
       );
       dispatch(inputJSONData(res.data));
     } catch (e) {
@@ -57,16 +57,25 @@ export default function NavBar() {
   const callSearchAPI = async () => {
     try {
       console.log('--- CORS ---', CORS_PROXY_URL);
+
       // const res = await axios(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
+      // console.log(res.data[1]);
       // setSuggestions(res.data[1]);
+      // dispatch(
+      //   manageCache({
+      //     [searchInput]: res.data[1]
+      //   })
+      // );
+
       const res = await axios(
         CORS_PROXY_URL + encodeURIComponent(YT_SEARCH_API + searchInput)
       );
-      setSuggestions(res.data.contents[1]);
+      // console.log(JSON.parse(res.data.contents)[1]);
+      setSuggestions(JSON.parse(res.data.contents)[1]);
       // caching prev result incase presses backspace
       dispatch(
         manageCache({
-          [searchInput]: res.data[1]
+          [searchInput]: JSON.parse(res.data.contents)[1]
         })
       );
     } catch (e) {

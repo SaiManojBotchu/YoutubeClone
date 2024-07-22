@@ -13,7 +13,7 @@ export default function SuggestionsComponent(props) {
                 console.log('1');
                 setSearchInput(s);
                 setShowSuggestions(false);
-                handleSearchOnClick();
+                handleSearchOnClick(s);
               }}>
               <i className='fa-solid fa-magnifying-glass mr-4'></i>
               <li key={s} className='mb-1'>

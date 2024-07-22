@@ -18,9 +18,9 @@ function VideoCard({ video }) {
   };
 
   return (
-    <Link to={`/watch?v=${video.id}`}>
+    <Link to={`/watch?v=${video.id}`} className='mb-16'>
       <div
-        className='mb-16 w-full h-auto rounded-2xl text-sm overflow-y-hidden'
+        className='w-full h-auto rounded-2xl text-sm overflow-y-hidden'
         onClick={getVideoRecommendations}>
         <img
           src={thumbnails.maxres?.url || thumbnails.medium.url}
