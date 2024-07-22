@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import formatViews from '../../utils/formatViews';
-import userIcon from '../../images/avatar.png';
-import { comments_API } from '../../utils/constants';
 import DOMPurify from 'dompurify';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import formatViews from '../../utils/formatViews';
+import { comments_API } from '../../utils/constants';
 
 const CommentsSection = () => {
   const [commentsData, setCommentsData] = useState([]);
@@ -26,9 +26,7 @@ const CommentsSection = () => {
     <div className='inline-block absolute top-[83%] w-[65%]'>
       <p className='mb-4 font-bold text-lg'>{formatViews(130005)} Comments</p>
       <div className='flex mb-8'>
-        <div className='mr-4'>
-          <img src={userIcon} alt='userIcon' className='h-10 mr-4' />
-        </div>
+        <AccountCircleIcon fontSize='large' className='mr-4' />
         <input type='text' value='Add a comment' />
       </div>
       {commentsData.map((item, index) => {
