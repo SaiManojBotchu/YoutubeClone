@@ -1,20 +1,18 @@
-export const API_KEY = 'AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI';
+// API Key
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-export const ytAPI =
-  'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=' +
-  API_KEY;
+// Ensure environment variables are defined
+if (!API_KEY) {
+  throw new Error('Missing YOUTUBE_API_KEY environment variable');
+}
 
-// bypassing the cors with the help of corsproxy.io
-const corsUrl = 'https://thingproxy.freeboard.io/fetch/';
-export const ytSearchAPI =
-  corsUrl +
-  'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=';
+// Base URL
+const YT_BASE_URL = 'https://youtube.googleapis.com/youtube/v3';
+// Cors URL - for bypassing the cors error
+const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
 
-export const ytQuerySearchAPI =
-  'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=';
-
-export const comments_API =
-  'https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=Zb1zVeXLUf8&key=' +
-  API_KEY;
-
-// 'https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=';
+// YouTube API Endpoints
+export const YT_API = `${YT_BASE_URL}/videos?part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
+export const YT_SEARCH_API = `${CORS_PROXY_URL}http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=`;
+export const YT_QUERY_SEARCH_API = `${YT_BASE_URL}/search?part=snippet&maxResults=25&q=`;
+export const YT_COMMENTS_API = `${YT_BASE_URL}/commentThreads?part=snippet,replies&videoId=Zb1zVeXLUf8&key=${API_KEY}`;

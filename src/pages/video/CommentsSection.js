@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import DOMPurify from 'dompurify';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import formatViews from '../../utils/formatViews';
-import { comments_API } from '../../utils/constants';
+import { YT_COMMENTS_API } from '../../utils/constants';
 
 const CommentsSection = () => {
   const [commentsData, setCommentsData] = useState([]);
@@ -13,7 +13,7 @@ const CommentsSection = () => {
 
   const getCommentsData = async () => {
     try {
-      const res = await fetch(comments_API);
+      const res = await fetch(YT_COMMENTS_API);
       const data = await res.json();
       await setCommentsData(data.items);
       // console.log(commentsData);

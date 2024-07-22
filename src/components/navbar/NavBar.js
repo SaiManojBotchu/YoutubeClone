@@ -10,7 +10,7 @@ import { toggleSideBarMenu } from '../../redux/appSlice';
 import { manageCache } from '../../redux/cacheSlice';
 import { inputJSONData } from '../../redux/searchResultsSlice';
 
-import { ytQuerySearchAPI, ytSearchAPI } from '../../utils/constants';
+import { YT_QUERY_SEARCH_API, YT_SEARCH_API } from '../../utils/constants';
 
 export default function NavBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -24,7 +24,7 @@ export default function NavBar() {
   const handleSearchOnClick = async () => {
     try {
       const data = await fetch(
-        ytQuerySearchAPI + searchInput + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
+        YT_QUERY_SEARCH_API + searchInput + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
       );
       const json = await data.json();
       dispatch(inputJSONData(json));
@@ -55,7 +55,7 @@ export default function NavBar() {
   // function to make api call on the searchInput text
   const callSearchAPI = async () => {
     try {
-      const res = await fetch(ytSearchAPI + searchInput);
+      const res = await fetch(YT_SEARCH_API + searchInput);
       const data = await res.json();
       // console.log(data);
       setSuggestions(data[1]);

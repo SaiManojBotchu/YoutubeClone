@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { inputJSONData } from '../../redux/searchResultsSlice';
-import { ytQuerySearchAPI } from '../../utils/constants';
+import { YT_QUERY_SEARCH_API } from '../../utils/constants';
 import formatViews from '../../utils/formatViews';
 import formatTime from '../../utils/formatTime';
 
@@ -16,7 +16,7 @@ export const SuggestedVideoCard = ({ eachResult, showDescription }) => {
 
   const getNewRecommendations = async (inputSearch) => {
     const res = await fetch(
-      ytQuerySearchAPI + inputSearch + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
+      YT_QUERY_SEARCH_API + inputSearch + '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI'
     );
     const data = await res.json();
     console.log(data);

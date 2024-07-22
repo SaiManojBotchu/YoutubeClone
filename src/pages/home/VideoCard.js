@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ytQuerySearchAPI, ytAPI } from '../../utils/constants';
+import { YT_API } from '../../utils/constants';
 import { inputJSONData } from '../../redux/searchResultsSlice';
 import formatTime from '../../utils/formatTime';
 import formatViews from '../../utils/formatViews';
@@ -19,7 +19,7 @@ function VideoCard({ video }) {
     //   ytQuerySearchAPI +
     //   snippet.channelTitle +
     //   '&key=AIzaSyCn76zXUdXLcqy4Ik1QwISRFLK307QsbRI';
-    const res = await fetch(ytAPI);
+    const res = await fetch(YT_API);
 
     const data = await res.json();
     // console.log(data);

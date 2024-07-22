@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import VideoCard from './VideoCard';
 import ButtonList from './ButtonList';
-import { ytAPI } from '../../utils/constants';
+import { YT_API } from '../../utils/constants';
 
 function Home() {
   const [vidoes, setVideos] = useState([]);
 
   const getVideos = async () => {
     try {
-      const data = await fetch(ytAPI);
+      const data = await fetch(YT_API);
       const json = await data.json();
       // console.log(json);
       setVideos(json.items);
