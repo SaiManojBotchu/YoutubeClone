@@ -57,8 +57,12 @@ export default function NavBar() {
   const callSearchAPI = async () => {
     try {
       console.log('--- CORS ---', CORS_PROXY_URL);
-      const res = await axios(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
-      setSuggestions(res.data[1]);
+      // const res = await axios(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
+      // setSuggestions(res.data[1]);
+      const res = await axios(
+        CORS_PROXY_URL + encodeURIComponent(YT_SEARCH_API + searchInput)
+      );
+      setSuggestions(res.data.contents[1]);
       // caching prev result incase presses backspace
       dispatch(
         manageCache({

@@ -10,7 +10,7 @@ if (!API_KEY) {
 const YT_BASE_URL = 'https://youtube.googleapis.com/youtube/v3';
 // Cors URL - for bypassing the cors error
 // export const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
-export const CORS_PROXY_URL = process.env.REACT_APP_CORS_PROXY_URL;
+export const CORS_PROXY_URL = 'https://api.allorigins.win/get?url=';
 
 // YouTube API Endpoints
 export const YT_API = `${YT_BASE_URL}/videos?part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;

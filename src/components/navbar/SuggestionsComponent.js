@@ -5,7 +5,7 @@ export default function SuggestionsComponent(props) {
   return (
     <div className='absolute bg-white top-full right-12 left-0 shadow-xl mt-3 rounded-md'>
       <ul className='list-none'>
-        {suggestions.map((s) => (
+        {suggestions?.map((s) => (
           <Link to='/results' key={s} className='h-full'>
             <div
               className='flex items-center ml-2 my-1 p-1 hover:bg-gray-200'
