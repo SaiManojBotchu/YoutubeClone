@@ -9,10 +9,11 @@ if (!API_KEY) {
 // Base URL
 const YT_BASE_URL = 'https://youtube.googleapis.com/youtube/v3';
 // Cors URL - for bypassing the cors error
-const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
+export const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
 
 // YouTube API Endpoints
 export const YT_API = `${YT_BASE_URL}/videos?part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=50&regionCode=IN&key=${API_KEY}`;
-export const YT_SEARCH_API = `${CORS_PROXY_URL}http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=`;
+export const YT_SEARCH_API =
+  'http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=';
 export const YT_QUERY_SEARCH_API = `${YT_BASE_URL}/search?part=snippet&maxResults=25&q=`;
 export const YT_COMMENTS_API = `${YT_BASE_URL}/commentThreads?part=snippet,replies&videoId=Zb1zVeXLUf8&key=${API_KEY}`;

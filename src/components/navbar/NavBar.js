@@ -10,7 +10,11 @@ import { toggleSideBarMenu } from '../../redux/appSlice';
 import { manageCache } from '../../redux/cacheSlice';
 import { inputJSONData } from '../../redux/searchResultsSlice';
 
-import { YT_QUERY_SEARCH_API, YT_SEARCH_API } from '../../utils/constants';
+import {
+  YT_QUERY_SEARCH_API,
+  YT_SEARCH_API,
+  CORS_PROXY_URL
+} from '../../utils/constants';
 
 export default function NavBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -52,10 +56,9 @@ export default function NavBar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput]);
 
-  // function to make api call on the searchInput text
-  const callSearchAPI = async () => {
+  const handleSearchApiCall = async (url) => {
     try {
-      const res = await fetch(YT_SEARCH_API + searchInput);
+      const res = await fetch(url);
       const data = await res.json();
       // console.log(data);
       setSuggestions(data[1]);
@@ -65,8 +68,18 @@ export default function NavBar() {
           [searchInput]: data[1]
         })
       );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // function to make api call on the searchInput text
+  const callSearchAPI = async () => {
+    try {
+      handleSearchApiCall(CORS_PROXY_URL + YT_SEARCH_API + searchInput);
     } catch (err) {
-      console.log('Navbar - Error: ' + err);
+      console.log('CORS PROXY NOT WORKING');
+      handleSearchApiCall(YT_SEARCH_API + searchInput);
     }
   };
 
